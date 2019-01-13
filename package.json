@@ -1,21 +1,21 @@
 {
   "name": "generator-yagge",
   "version": "1.0.0",
-  "description": "Yet another Gradle project generator",
+  "description": "Yet another Gradle project generator. Generates a Java's Gradle basic project scaffolding",
   "keywords": [
     "yeoman-generator",
     "Java",
     "Gradle"
   ],
-  "homepage": "https://github.com/earelin/yagge",
-  "bugs": "https://github.com/earelin/yagge/issues",
+  "homepage": "https://github.com/earelin/generator-yagge",
+  "bugs": "https://github.com/earelin/generator-yagge/issues",
   "author": {
     "name": "Xavier Carriba",
     "url": "https://github.com/earelin"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/earelin/yagge.git"
+    "url": "git://github.com:earelin/generator-yagge.git"
   },
   "files": [
     "app"
