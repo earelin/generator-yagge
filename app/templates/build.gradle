@@ -1,0 +1,81 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+<% if (components.includes('Lombok')) { %>
+        classpath "net.ltgt.gradle:gradle-apt-plugin:${aptPluginVersion}"
+<% } %>
+        classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:${gradleSpotBugsVersion}"
+    }
+}
+
+description = '<%=projectDescription%>'
+
+apply plugin: 'checkstyle'
+apply plugin: 'com.github.spotbugs'
+apply plugin: 'jacoco'
+apply plugin: 'java-library'
+<% if (components.includes('Lombok')) { %>apply plugin: 'net.ltgt.apt'<% } %>
+apply plugin: 'pmd'
+
+sourceCompatibility = <%=javaVersion%>
+targetCompatibility = <%=javaVersion%>
+
+compileJava.options*.compilerArgs = ["-Xlint:all"]
+compileTestJava.options*.compilerArgs = ["-Xlint:all"]
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleToolVersion}"
+    spotbugsPlugins "com.h3xstream.findsecbugs:findsecbugs-plugin:${findsecbugsVersion}"
+    
+    testCompile "junit:junit:${jUnitVersion}"
+    testCompile "org.assertj:assertj-core:${assertJVersion}"
+
+<% if (components.includes('JSON Jackson')) { %>
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+<% } %>
+<% if (components.includes('Lombok')) { %>
+    apt "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+<% } %>
+}
+
+checkstyle {
+    configFile = file("${project.rootDir}/checkstyle.xml")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+pmd {
+    ignoreFailures = true
+    sourceSets = [sourceSets.main]
+}
+
+spotbugs {
+    sourceSets = [sourceSets.main]
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}

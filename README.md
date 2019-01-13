@@ -1,2 +1,3 @@
-# generator-yagpg
+# Yagge
+
 Yet another Gradle project generator

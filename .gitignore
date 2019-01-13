@@ -1,0 +1,5 @@
+node_modules
+.gradle
+.settings
+.project
+.sonarlint
