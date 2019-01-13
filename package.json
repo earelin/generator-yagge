@@ -1,6 +1,6 @@
 {
   "name": "generator-yagge",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "Yet another Gradle project generator",
   "keywords": [
     "yeoman-generator",
