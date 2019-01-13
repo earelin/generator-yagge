@@ -1,6 +1,6 @@
 {
   "name": "generator-yagge",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Yet another Gradle project generator. Generates a Java's Gradle basic project scaffolding",
   "keywords": [
     "yeoman-generator",
@@ -21,20 +21,10 @@
     "app"
   ],
   "main": "app/index.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "dependencies": {
     "chalk": "^1.1.3",
     "mkdirp": "^0.5.1",
     "yeoman-generator": "^1.0.0"
   },
-  "devDependencies": {
-    "mocha": "^3.1.2"
-  },
-  "licenses": [
-    {
-      "type": "GPL3"
-    }
-  ]
+  "license": "GPL-3.0"
 }
