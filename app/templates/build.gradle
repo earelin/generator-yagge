@@ -5,9 +5,6 @@ buildscript {
         }
     }
     dependencies {
-<% if (components.includes('Lombok')) { %>
-        classpath "net.ltgt.gradle:gradle-apt-plugin:${aptPluginVersion}"
-<% } %>
         classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:${gradleSpotBugsVersion}"
     }
 }
@@ -18,7 +15,6 @@ apply plugin: 'checkstyle'
 apply plugin: 'com.github.spotbugs'
 apply plugin: 'jacoco'
 apply plugin: 'java-library'
-<% if (components.includes('Lombok')) { %>apply plugin: 'net.ltgt.apt'<% } %>
 apply plugin: 'pmd'
 
 sourceCompatibility = <%=javaVersion%>
@@ -33,17 +29,15 @@ repositories {
 
 dependencies {
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleToolVersion}"
-    spotbugsPlugins "com.h3xstream.findsecbugs:findsecbugs-plugin:${findsecbugsVersion}"
     
-    testCompile "junit:junit:${jUnitVersion}"
-    testCompile "org.assertj:assertj-core:${assertJVersion}"
+    testImplementation "junit:junit:${jUnitVersion}"
+    testImplementation "org.assertj:assertj-core:${assertJVersion}"
 
 <% if (components.includes('JSON Jackson')) { %>
-    compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
-    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 <% } %>
 <% if (components.includes('Lombok')) { %>
-    apt "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
 <% } %>
 }

@@ -1,8 +1,9 @@
 const chalk = require('chalk')
-const Generator = require('yeoman-generator')
+const YaggeGenerator = require('../commons/yagge-generator')
+const Logo = require('../commons/logo')
 const mkdirp = require('mkdirp')
 
-module.exports = class extends Generator {
+module.exports = class extends YaggeGenerator {
 
   constructor(args, opts) {
     super(args, opts)
@@ -11,16 +12,8 @@ module.exports = class extends Generator {
 
   initializing() {
     // ASCII font Modular
-    this.log(chalk.green(`             
-           __   __  _______  _______  _______  _______ 
-          |  | |  ||   _   ||       ||       ||       |
-          |  |_|  ||  |_|  ||    ___||    ___||    ___|
-          |       ||       ||   | __ |   | __ |   |___ 
-          |_     _||       ||   ||  ||   ||  ||    ___|
-            |   |  |   _   ||   |_| ||   |_| ||   |___ 
-            |___|  |__| |__||_______||_______||_______|
-      `));
-    this.log("                ===" + chalk.yellow(" Yet Another Gradle Project Generator ") + "===\n")
+    this.log(chalk.green(Logo.getAscii()));
+    this.log("             === " + chalk.yellow("Project generation") + " ===")
   }
 
   prompting() {
