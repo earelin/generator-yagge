@@ -1,6 +1,43 @@
-node_modules
-.gradle
-.settings
-.project
-.sonarlint
+### Node ###
+/node_modules/
 *.log
+
+### Gradle ###
+.gradle
+/build/
+
+### Visual studio code ###
+.idea
+*.iml
+.project
+/.settings/
+.classpath
+bin
+/.sonarlint/
+/.vscode/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### OS ###
+.DS_Store
